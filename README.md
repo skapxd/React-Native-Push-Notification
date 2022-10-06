@@ -4,7 +4,7 @@
 
 Por favor revise las diferencias entre el commit `chore: init` y `chore: finished settings`
 
---- 
+---
 
 ## El ambiente utilizado para realizar configuración es
 
@@ -16,7 +16,7 @@ Por favor revise las diferencias entre el commit `chore: init` y `chore: finishe
 
 ## Importante!!
 
-Para que el proyecto funcione, `es obligatorio añadir el google-service.json al proyecto`, para configurar el proyecto, por favor siga los pasos
+Para que el proyecto funcione, `es obligatorio añadir el google-service.json al proyecto y que la aplicación se instale en un dispositivo físico`, para configurar el proyecto, por favor siga los pasos
 
 Después de haber configurado los pasos correctamente, ejecute
 
@@ -53,6 +53,7 @@ yarn android
 ![img](./doc/Screenshot_8.png)
 
 ## Enviando notificaciones
+
 ![img](doc/2022-10-06-13-37-07.gif)
 ![img](doc/2022-10-06%2013-41-51.gif)
 
