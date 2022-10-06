@@ -1,5 +1,11 @@
 # Configurar notificaciones en React Native
 
+## Añadir `Notificaciones Push` en su aplicación
+
+Por favor revise las diferencias entre el commit `chore: init` y `chore: finished settings`
+
+--- 
+
 ## El ambiente utilizado para realizar configuración es
 
     npm: 8.11.0
@@ -19,10 +25,6 @@ yarn
 
 yarn android
 ```
-
-## Añadir `Notificaciones Push` en su aplicación
-
-Por favor revise las diferencias entre el commit `chore: init` y `chore: finished settings`
 
 ---
 
@@ -51,8 +53,7 @@ Por favor revise las diferencias entre el commit `chore: init` y `chore: finishe
 ![img](./doc/Screenshot_8.png)
 
 ## Enviando notificaciones
-
-![img](doc/2022-10-06%2011-46-04.gif)
+![img](doc/2022-10-06-13-37-07.gif)
 ![img](doc/2022-10-06%2013-41-51.gif)
 
 ## cURL para enviar `Notificaciones Push`
