@@ -10,7 +10,7 @@
 
 ## Importante!!
 
-Para que el proyecto funcione, es obligatorio añadir el google-service.json al proyecto, para configurar el proyecto, por favor siga los pasos
+Para que el proyecto funcione, `es obligatorio añadir el google-service.json al proyecto`, para configurar el proyecto, por favor siga los pasos
 
 Después de haber configurado los pasos correctamente, ejecute
 
@@ -19,6 +19,12 @@ yarn
 
 yarn android
 ```
+
+## Añadir `Notificaciones Push` en su aplicación
+
+Por favor revise las diferencias entre el commit `chore: init` y `chore: finished settings`
+
+---
 
 ## Paso 1. Crear cuenta en Firebase y añádele una aplicación de android, debería verse asi
 
@@ -48,3 +54,32 @@ yarn android
 
 ![img](doc/2022-10-06%2011-46-04.gif)
 ![img](doc/2022-10-06%2013-41-51.gif)
+
+## cURL para enviar `Notificaciones Push`
+
+Datos necesarios para que la petición funcione
+
+1. Header: Authorization: key=`Firebase-Server-Token` // -> Se obtiene en la configuración de Firebase
+2. Body: to: `Device-Token` // -> Se obtiene al momento de integrar el paquete `react-native-push-notification` en la aplicación
+
+Puede importar este cURL en su cliente REST de confianza (Postman, Rapid API ...) para tener una idea de como enviar notificaciones
+
+```bash
+curl --location --request POST 'https://fcm.googleapis.com/fcm/send' \
+--header 'Authorization: key=Firebase-Server-Token' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "notification": {
+        "body": "this is a body",
+        "title": "this is a title"
+    },
+    "priority": "high",
+    "data": {
+        "click_action": "FLUTTER_NOTIFICATION_CLICK",
+        "id": "1",
+        "status": "done",
+        "uid": "encanta eso"
+    },
+    "to": "Device-Token"
+}'
+```

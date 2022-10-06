@@ -1,5 +1,5 @@
 curl --location --request POST 'https://fcm.googleapis.com/fcm/send' \
---header 'Authorization: key=AAAAAmXvTco:APA91bGrFnPO91bp3fvHURYRC_jDDeBQBlEDaTbk2xyAm9NXQ3QTWQf6jzpJrCm8nQ6swgbP7e5EyQ8SmU25sVPbL98iM-W6zRI9h7rrrrusdkeD6AsGSV8dkA4RoWLFpEdZwVWcxAjc' \
+--header 'Authorization: key=Firebase-Server-Token' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "notification": {
@@ -13,5 +13,5 @@ curl --location --request POST 'https://fcm.googleapis.com/fcm/send' \
         "status": "done",
         "uid": "encanta eso"
     },
-    "to": "dMW4-f4gQpi-NeDvepCWSN:APA91bGTMjYYz5USMUOeca6kne4H15UQRxyKAxrBGNxfwtuDOU3DyWxw5V-DS5GDi3B2dYJdqS2VXMQrOSzn-xtsJ0bS7nRl7cqhucGP0xra8bXu8XS6JrNDYX1qcGLFkYf8YsisvYF4"
+    "to": "Device-Token"
 }'
