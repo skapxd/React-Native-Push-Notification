@@ -2,7 +2,98 @@
 
 ## Añadir `Notificaciones Push` en su aplicación
 
-Por favor revise las diferencias entre el commit `chore: init` y `chore: finished settings`
+Debido a que es necesario modificar varios archivos de la carpeta `android`, creo que es mejor revisar las diferencias que existen entre el commit `chore: init` y `chore: finished settings` los archivos de la carpeta android
+
+La carpeta `PushNotification` tiene toda la configuración para integrar correctamente la api de Notificaciones
+
+`new NotificationService()` es usado para obtener el token de identificación del dispositivo y es usado para reaccionar al momento de recibir una notificación
+
+```jsx
+import React, {useEffect, useState} from 'react';
+import {
+  Alert,
+  Text,
+  TextInput,
+  Touchable,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {NotificationService} from './src/PushNotifications/NotificationService';
+
+export default function App() {
+  const [register, setRegister] = useState({token: ''});
+
+  const [serverToken, setServerToken] = useState('');
+
+  /**@type {import('./src/PushNotifications/types').onRegister}*/
+  const onRegister = _register => {
+    setRegister({token: _register.token});
+  };
+
+  /**@type {import('./src/PushNotifications/types').onNotification}*/
+  const onNotification = notification => {
+    notificationService.localNotif(notification.title, notification.message);
+  };
+
+  const notificationService = new NotificationService(
+    onRegister,
+    onNotification,
+  );
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+      }}>
+      <View
+        style={{
+          paddingHorizontal: 10,
+          alignItems: 'center',
+        }}>
+        <Text>Device Token:</Text>
+        <TextInput
+          style={{backgroundColor: '#f00', width: '100%'}}
+          defaultValue={register.token}
+        />
+      </View>
+
+      <View
+        style={{
+          paddingHorizontal: 10,
+          alignItems: 'center',
+        }}>
+        <Text>Server Token:</Text>
+        <TextInput
+          style={{backgroundColor: '#f00', width: '100%'}}
+          onChangeText={e => {
+            console.log('🚀 ~ file: App.js ~ line 62 ~ App ~ e', e);
+            setServerToken(e);
+          }}
+        />
+      </View>
+
+      <TouchableOpacity
+        style={{
+          alignSelf: 'center',
+          marginTop: 20,
+          backgroundColor: '#0ff',
+          paddingHorizontal: 18,
+          paddingVertical: 8,
+          borderRadius: 4,
+        }}
+        onPress={() => {
+          notificationService.createRemoteNotification(
+            register.token,
+            serverToken,
+          );
+        }}>
+        <Text>Send notification</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+```
 
 ---
 

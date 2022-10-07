@@ -22,7 +22,6 @@ export default function App() {
   /**@type {import('./src/PushNotifications/types').onNotification}*/
   const onNotification = notification => {
     // @ts-ignore
-    // Alert.alert(notification.title, String(notification.message));
     notificationService.localNotif(notification.title, notification.message);
   };
 
